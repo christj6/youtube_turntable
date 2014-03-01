@@ -77,64 +77,7 @@
           }
 
       }
-
-      /*
-      function loopback()
-          {
-              // Check if end point is reached
-              if (end != 0)
-              {
-                  if (which == 0)
-                  {
-                      if (ytplayer2.getCurrentTime() > end)
-                      {
-                          ytplayer.playVideo();
-                          ytplayer2.pauseVideo();
-                          ytplayer2.seekTo(start, true);
-                          
-                          which = 1;
-                      }
-                  }
-                  else
-                  {
-                      if (ytplayer.getCurrentTime() > end)
-                      {
-                          ytplayer2.playVideo();
-                          ytplayer.pauseVideo();
-                          ytplayer.seekTo(start, true);
-                          
-                          which = 0;
-                      }
-                  }
-              }
-          }
-          */
       ////////////////////////////
-
-      // Display information about the current state of the player
-      function updatePlayerInfo() {
-        // Also check that at least one function exists since when IE unloads the
-        // page, it will destroy the SWF before clearing the interval.
-        if(ytplayer && ytplayer.getDuration) {
-          updateHTML("videoDuration", ytplayer.getDuration());
-          updateHTML("videoCurrentTime", ytplayer.getCurrentTime());
-            updateHTML("start", start);
-            updateHTML("end", end);
-            //loopback();
-        }
-      }
-      
-      // Display information about the current state of the player
-      function updatePlayerInfo2() {
-        if(ytplayer2 && ytplayer2.getDuration) {
-          updateHTML("videoDuration2", ytplayer2.getDuration());
-          updateHTML("videoCurrentTime2", ytplayer2.getCurrentTime());
-            //updateHTML("start", start);
-            //updateHTML("end", end);
-            //loopback();
-            
-        }
-      }
       
       // This function is automatically called by the player once it loads
       function onYouTubePlayerReady(playerId) {
@@ -144,18 +87,12 @@
           ytplayer = document.getElementById("ytPlayer");
           // This causes the updatePlayerInfo function to be called every 250ms to
           // get fresh data from the player
-          setInterval(updatePlayerInfo, 250);
-          updatePlayerInfo();
-          ytplayer.addEventListener("onStateChange", "onPlayerStateChange");
           ytplayer.addEventListener("onError", "onPlayerError");
         }
         else if(playerId == "player2") {
           ytplayer2 = document.getElementById("ytPlayer2");
           // This causes the updatePlayerInfo function to be called every 250ms to
           // get fresh data from the player
-          setInterval(updatePlayerInfo2, 250);
-          updatePlayerInfo2();
-          ytplayer2.addEventListener("onStateChange", "onPlayerStateChange2");
           ytplayer2.addEventListener("onError", "onPlayerError");
         }
       }
@@ -173,10 +110,9 @@
                            "videoDiv", "480", "295", "9", null, null, params, atts);
                            
         // Now do it all again with a different player
-        var videoID2 = videoID
         var params = { allowScriptAccess: "always" };
         var atts = { id: "ytPlayer2" };
-        swfobject.embedSWF("http://www.youtube.com/v/" + videoID2 + 
+        swfobject.embedSWF("http://www.youtube.com/v/" + videoID + 
                           "?version=3&enablejsapi=1&playerapiid=player2", 
                           "videoDiv2", "425", "344", "9", null, null, params, atts);
       }
