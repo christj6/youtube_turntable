@@ -65,17 +65,6 @@
                   }
               }
           }
-
-          if (e.keyCode == "83") {
-              if (event.shiftKey)
-              {
-                // S
-                  //set end time equal to current video time
-                  end = ytplayer.getCurrentTime();
-                  updateHTML("end", end);
-              }
-          }
-
       }
       ////////////////////////////
       
