@@ -74,14 +74,12 @@
         // when the embedded player was loaded
         if(playerId == "player1") {
           ytplayer = document.getElementById("ytPlayer");
-          // This causes the updatePlayerInfo function to be called every 250ms to
-          // get fresh data from the player
+
           ytplayer.addEventListener("onError", "onPlayerError");
         }
         else if(playerId == "player2") {
           ytplayer2 = document.getElementById("ytPlayer2");
-          // This causes the updatePlayerInfo function to be called every 250ms to
-          // get fresh data from the player
+
           ytplayer2.addEventListener("onError", "onPlayerError");
         }
       }
